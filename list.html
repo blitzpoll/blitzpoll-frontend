@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Blitzpoll</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="ratchet/css/style.css" rel="stylesheet">
+    <link href="ratchet/css/ratchet.css" rel="stylesheet">
+	
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="ratchet/js/ratchet.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="functions.js"></script>
+	
+  </head>
+  <body>
+
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+      <h1 class="title">Blitzpoll</h1>
+    </header>
+
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content">
+      
+      <p><img src="img/logo_real" class="logo-small homelogo"><span class="hometeam">Real Madrid</span> vs. <span class="hometeam">Atletico Madrid</span><img src="img/logo_atletico" class="logo-small awaylogo"></p>
+      
+		      
+	  <ul class="table-view">
+		  <li class="table-view-cell">
+		    <a class="navigate-right">
+		      <button class="btn btn-outlined btn-primary">3:45</button>
+		      <span class="listquestion">Who will win the game?</span>
+		    </a>
+		  </li>
+		  <li class="table-view-cell">
+		    <a class="navigate-right">
+		      <button class="btn btn-outlined btn-primary">1:17</button>
+		      <span class="listquestion">Was that penalty justified?</span>
+		    </a>
+		  </li>
+		  <li class="table-view-cell">
+		    <a class="navigate-right">
+		      <span class="listquestion">Will Ronaldo or Messi or Pepe score today?</span>
+		    </a>
+		  </li>
+		</ul>
+      
+      </div>
+      
+    </div> <!--content-->
+
+  </body>
+</html>
