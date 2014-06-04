@@ -12,5 +12,8 @@
   "devDependencies": {
     "brfs": "^0.1.0",
     "watchify": "^0.10.1"
+  },
+  "dependencies": {
+    "ratchet": "git://github.com/twbs/ratchet"
   }
 }
