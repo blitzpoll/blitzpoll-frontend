@@ -18,7 +18,6 @@ function HacksportsClient() {
 }
 
 HacksportsClient.prototype._parseIncomingData = function(data) {
-    console.log(data);
     var cmd = data.substring(0, data.indexOf(':'));
     var obj = JSON.parse(data.substring(data.indexOf(':') + 1));
 
@@ -26,7 +25,7 @@ HacksportsClient.prototype._parseIncomingData = function(data) {
     case 'QUESTION': this._handleQuestion(obj); break;
     case 'ANSWERS': this._handleAnswers(obj); break;
     case 'GAME_INFO': this._gameInfoCb.call(this, obj); break;
-    case 'PREVIOUS_QUESTIONS': this._previousQuestionsCb.call(this, obj);break;
+    case 'PREVIOUS_QUESTIONS': this._previousQuestionsCb.call(this, obj); break;
     }
 }
 
