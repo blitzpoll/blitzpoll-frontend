@@ -1,0 +1,16 @@
+{
+  "name": "blitzpoll-frontend",
+  "version": "0.0.0",
+  "description": "The frontend for blitzpoll.me",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-dev": "watchify app.js -t brfs -o static/bundle.js"
+  },
+  "author": "Max Gfeller <max.gfeller@gmail.com>",
+  "license": "proprietary",
+  "devDependencies": {
+    "brfs": "^0.1.0",
+    "watchify": "^0.10.1"
+  }
+}
