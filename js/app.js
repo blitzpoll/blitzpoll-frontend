@@ -1,66 +1,82 @@
 var HacksportsClient = require('./client.js');
+var QuestionDisplay = require('./components/question-display');
+var GameInfo = require('./components/game-info');
 
-client = new HacksportsClient();
+var client = new HacksportsClient();
+var gi = new GameInfo();
+var qd = new QuestionDisplay();
 
-client.on('question', function(question) {
+gi.appendTo(document.querySelector('#game-info'));
+qd.appendTo(document.querySelector('#display-content'));
 
-    setInterval(function() {
-
-    	if (question.timeout <= 0) {
-    		$('.answers').html('');
-    		$('#countdown').text('');
-    		$('.results').fadeIn(1000);
-    		return;
-    	}
-
-    	$('#countdown').text(question.timeout--);
-
-    }, 1000);
-
-    $('#question')
-    	.data('id', question.id)
-    	.text(question.text);
-
-    question.answers.forEach(function (option, i) {
-    	$('.answers').append('<button class="btn btn-block btn-outlined" id="answer-' + (i + 1) + '">' + option + '</button>');
+client.on('ready', function() {
+    client.getGameInfo(function(gameInfo) {
+        gi.setInfo(gameInfo);
     });
-
-    $('.answers button').click(function(e) {
-	  // hide vote buttons
-	  $('.answers').fadeOut(1000).delay(500).animate({ height: 0}, 10);
-
-	  // send answer to server
-	  client.answer($('#question').data('id'), $(e.currentTarget).text());
-
-	  // display results
-	  $('.results').delay(1000).fadeIn(2000);
-	});
-
 });
 
-client.on('answers', function(answers) {
 
-    console.debug('answers', answers);
- 	var total = 0,
- 		results = [];
 
-    for (name in answers.answers) {
-    	total += parseInt(answers.answers[name]);
-    }
-
-    for (name in answers.answers) {
- 		results.push({
- 			answer: name,
- 			percentage: Math.round(parseInt(answers.answers[name]) / (total || 1) * 100)
- 		});
- 	}
-
- 	results.total = total;
-     console.debug('results total', results);
-
- 	updateResults(results);
-
-});
+//
+// client.on('question', function(question) {
+//
+//     setInterval(function() {
+//
+//     	if (question.timeout <= 0) {
+//     		$('.answers').html('');
+//     		$('#countdown').text('');
+//     		$('.results').fadeIn(1000);
+//     		return;
+//     	}
+//
+//     	$('#countdown').text(question.timeout--);
+//
+//     }, 1000);
+//
+//     $('#question')
+//     	.data('id', question.id)
+//     	.text(question.text);
+//
+//     question.answers.forEach(function (option, i) {
+//     	$('.answers').append('<button class="btn btn-block btn-outlined" id="answer-' + (i + 1) + '">' + option + '</button>');
+//     });
+//
+//     $('.answers button').click(function(e) {
+// 	  // hide vote buttons
+// 	  $('.answers').fadeOut(1000).delay(500).animate({ height: 0}, 10);
+//
+// 	  // send answer to server
+// 	  client.answer($('#question').data('id'), $(e.currentTarget).text());
+//
+// 	  // display results
+// 	  $('.results').delay(1000).fadeIn(2000);
+// 	});
+//
+// });
+//
+// client.on('answers', function(answers) {
+//
+//     console.debug('answers', answers);
+//  	var total = 0,
+//  		results = [];
+//
+//     for (name in answers.answers) {
+//     	total += parseInt(answers.answers[name]);
+//     }
+//
+//     for (name in answers.answers) {
+//  		results.push({
+//  			answer: name,
+//  			percentage: Math.round(parseInt(answers.answers[name]) / (total || 1) * 100)
+//  		});
+//  	}
+//
+//  	results.total = total;
+//      console.debug('results total', results);
+//
+//  	updateResults(results);
+//
+// });
 
 
 // makeList(questions);
