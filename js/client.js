@@ -7,11 +7,12 @@ inherits(HacksportsClient, EventEmitter);
 function HacksportsClient() {
     reconnect(function(stream) {
         this.stream = stream;
-    }.bind(this)).connect('/live-data');
+        this.emit('ready');
 
-    this.stream.on('data', function(data) {
-        this._parseIncomingData(data);
-    }.bind(this));
+        this.stream.on('data', function(data) {
+            this._parseIncomingData(data);
+        }.bind(this));
+    }.bind(this)).connect('/live-data');
 
     this.results = {};
 }
