@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Blitzpoll</title>
 
@@ -14,45 +15,47 @@
     <!-- Include the compiled Ratchet CSS -->
     <link href="ratchet/css/style.css" rel="stylesheet">
     <link href="ratchet/css/ratchet.css" rel="stylesheet">
-	
-	  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
-    <!-- Include the compiled Ratchet JS -->
-    <script src="ratchet/js/ratchet.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+</head>
 
-	<script src="browserify/functions.js"></script>
-
-  </head>
-  <body>
+<body>
 
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav">
-      <h1 class="title">Blitzpoll</h1>
+        <h1 class="title">Blitzpoll</h1>
     </header>
 
-    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
     <div class="content">
-      
-      <p><img src="img/logo_real.png" class="logo-small homelogo"><span class="hometeam">Real Madrid</span> vs. <span class="hometeam">Atletico Madrid</span><img src="img/logo_atletico.png" class="logo-small awaylogo"></p>
-      
-      
-      <h3 id="question">The next question will appear shortly. Stay tuned.</h3>
-      
-      <p id="countdown"><br /></p>
-      
-      <div class="answers"></div>
-      
-      <div class="results"></div>
-      
-    </div> <!--content-->
-    
+
+        <p>
+            <img src="img/logo_real.png" class="logo-small homelogo"><span class="hometeam">Real Madrid</span> vs. <span class="hometeam">Atletico Madrid</span>
+            <img src="img/logo_atletico.png" class="logo-small awaylogo">
+        </p>
+
+
+        <h3 id="question">The next question will appear shortly. Stay tuned.</h3>
+
+        <p id="countdown">
+            <br />
+        </p>
+
+        <div class="answers"></div>
+
+        <div class="results"></div>
+
+    </div>
+    <!--content-->
+
     <!--
     <div class="bar bar-standard bar-footer">
 		<h1 class="title"><a href="list.html" data-transition="slide-in">View all questions</a></h1>
     -->
 
-	</div>
+    </div>
 
-  </body>
+    <script src="static/bundle.js"></script>
+
+</body>
+
 </html>
