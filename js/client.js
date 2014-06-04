@@ -1,7 +1,6 @@
 var inherits = require('util').inherits;
 var EventEmitter = require('events').EventEmitter;
-var shoe = require('shoe');
-var reconnect = require('reconnect');
+var reconnect = require('reconnect/shoe');
 
 inherits(HacksportsClient, EventEmitter);
 
