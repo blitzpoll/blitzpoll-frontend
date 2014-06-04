@@ -5,15 +5,25 @@
   "main": "client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-dev": "watchify app.js -t brfs -o static/bundle.js"
+    "watch-css": "catw $(cat build/styles) -v -o static/bundle.css",
+    "watch-js": "watchify app.js -t brfs -d -v -o static/bundle.js",
+    "watch-dev": "npm run watch-css & npm run watch-js &",
+    "build-css": "cat $(cat build/styles) > static/bundle.css",
+    "build-js": "browserify app.js -t brfs | uglifyjs -mc > static/bundle.js",
+    "build": "npm run build-css && npm run build-js",
+    "start": "npm install && npm run build"
   },
   "author": "Max Gfeller <max.gfeller@gmail.com>",
   "license": "proprietary",
   "devDependencies": {
     "brfs": "^0.1.0",
-    "watchify": "^0.10.1"
+    "catw": "^0.2.0",
+    "uglifyjs": "^2.3.6",
+    "watchify": "^0.10.1",
+    "browserify": "^4.1.8"
   },
   "dependencies": {
-    "ratchet": "git://github.com/twbs/ratchet"
+    "ratchet": "git://github.com/twbs/ratchet",
+    "reconnect": "^2.0.0"
   }
 }
