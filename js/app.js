@@ -15,7 +15,9 @@ client.on('ready', function() {
     });
 });
 
-
+client.on('question', function(question) {
+    qd.setQuestion(question);
+})
 
 //
 // client.on('question', function(question) {
