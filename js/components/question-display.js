@@ -10,4 +10,10 @@ function QuestionDisplay() {
     Widget.call(this, html);
 }
 
+QuestionDisplay.prototype.setQuestion = function(question) {
+    var el = document.querySelector('#question');
+    el.setAttribute('data-id', question.id);
+    el.textContent = question.text;
+}
+
 module.exports = QuestionDisplay;
