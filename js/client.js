@@ -26,7 +26,7 @@ HacksportsClient.prototype._parseIncomingData = function(data) {
     case 'QUESTION': this._handleQuestion(obj); break;
     case 'ANSWERS': this._handleAnswers(obj); break;
     case 'GAME_INFO': this._gameInfoCb.call(this, obj); break;
-    case 'PREVIOUS_QUESTIONS': this._handlePreviousQuestions(); break;
+    case 'PREVIOUS_QUESTIONS': this._handlePreviousQuestions(obj); break;
     }
 }
 
@@ -43,7 +43,7 @@ HacksportsClient.prototype._handlePreviousQuestions = function(questions) {
     questions.forEach(function(question) {
         this.questions[question.id] = question;
     }.bind(this));
-    this._previousQuestionsCb.call(this, obj);
+    this._previousQuestionsCb.call(this, questions);
 }
 
 HacksportsClient.prototype._handleAnswers = function(answers) {
