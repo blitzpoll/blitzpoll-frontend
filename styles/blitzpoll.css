@@ -1,9 +1,12 @@
 .content {
-    background: url(/img/bg-small.png) no-repeat center center fixed !important;
+    /*background: url(/img/bg-small.png) no-repeat center center fixed !important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover;*/
+}
+.content {
+    text-align: center;
 }
 .logos button {
     margin: 0 auto;
@@ -43,4 +46,5 @@ h3.question {
 }
 .teams {
     display: none;
+    margin-top: 60px;
 }
