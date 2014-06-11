@@ -3,15 +3,17 @@ var HacksportsClient = require('./client.js');
 // var QuestionDisplay = require('./components/question-display');
 var GameInfo = require('./components/game-info');
 var NavBar = require('./components/nav-bar');
+var QuestionList = require('./components/question-list');
 var questionModal = require('./components/question-modal');
 
 var client = new HacksportsClient();
 var gi = new GameInfo();
-// var qd = new QuestionDisplay();
+var ql = new QuestionList();
 var nb = new NavBar();
 
 page('/', function() {
     // render list of questions
+    ql.appendTo('.question-list-container');
 });
 
 page('/question/:id', function(ctx) {
@@ -27,9 +29,15 @@ client.on('ready', function() {
     client.getGameInfo(function(gameInfo) {
         gi.setInfo(gameInfo);
     });
+
+    client.getPreviousQuestions(function(questions) {
+        console.log(questions);
+        ql.addQuestions(questions);
+    });
 });
 
 client.on('question', function(question) {
+    ql.addQuestion(question);
     questionModal(question, client);
     // qd.setQuestion(question);
 });
