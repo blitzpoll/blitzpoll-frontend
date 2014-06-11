@@ -15,6 +15,7 @@ function HacksportsClient() {
     }.bind(this)).connect('/live-data');
 
     this.results = {};
+    this.questions = {};
 }
 
 HacksportsClient.prototype._parseIncomingData = function(data) {
@@ -25,13 +26,24 @@ HacksportsClient.prototype._parseIncomingData = function(data) {
     case 'QUESTION': this._handleQuestion(obj); break;
     case 'ANSWERS': this._handleAnswers(obj); break;
     case 'GAME_INFO': this._gameInfoCb.call(this, obj); break;
-    case 'PREVIOUS_QUESTIONS': this._previousQuestionsCb.call(this, obj); break;
+    case 'PREVIOUS_QUESTIONS': this._handlePreviousQuestions(); break;
     }
 }
 
 HacksportsClient.prototype._handleQuestion = function(question) {
+    this.questions[question.id] = question;
     this.results[question.id] = {};
     this.emit('question', question);
+}
+
+HacksportsClient.prototype._handlePreviousQuestions = function(questions) {
+    if(!questions) {
+        return this._previousQuestionsCb.call(this, []);
+    }
+    questions.forEach(function(question) {
+        this.questions[question.id] = question;
+    }.bind(this));
+    this._previousQuestionsCb.call(this, obj);
 }
 
 HacksportsClient.prototype._handleAnswers = function(answers) {
@@ -53,6 +65,10 @@ HacksportsClient.prototype.answer = function(id, answer) {
 HacksportsClient.prototype.getGameInfo = function(cb) {
     this.stream.write('GET_GAME_INFO: ' + JSON.stringify({}));
     this._gameInfoCb = cb;
+}
+
+HacksportsClient.prototype.getCurrentQuestion = function(cb) {
+
 }
 
 HacksportsClient.prototype.getPreviousQuestions = function(cb) {
