@@ -1,13 +1,27 @@
+var page = require('page');
 var HacksportsClient = require('./client.js');
-var QuestionDisplay = require('./components/question-display');
+// var QuestionDisplay = require('./components/question-display');
 var GameInfo = require('./components/game-info');
+var NavBar = require('./components/nav-bar');
+var questionModal = require('./components/question-modal');
 
 var client = new HacksportsClient();
 var gi = new GameInfo();
-var qd = new QuestionDisplay();
+// var qd = new QuestionDisplay();
+var nb = new NavBar();
 
+page('/', function() {
+    // render list of questions
+});
+
+page('/question/:id', function(ctx) {
+
+});
+
+page.start();
+
+nb.appendTo(document.querySelector('.nav-bar-wrapper'));
 gi.appendTo(document.querySelector('#game-info'));
-qd.appendTo(document.querySelector('#display-content'));
 
 client.on('ready', function() {
     client.getGameInfo(function(gameInfo) {
@@ -16,8 +30,9 @@ client.on('ready', function() {
 });
 
 client.on('question', function(question) {
-    qd.setQuestion(question);
-})
+    questionModal(question, client);
+    // qd.setQuestion(question);
+});
 
 //
 // client.on('question', function(question) {
@@ -96,15 +111,10 @@ $('.homelogo').$(this).attr("src", game.awaylogo);
 
 // show splash page to user on first visit, set cookie, save user's team selection
 
-
 // push question to users
 
 
 // initiate countdown
-
-
-
-
 
 // update results
 function updateResults(results) {
