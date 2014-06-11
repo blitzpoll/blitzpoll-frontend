@@ -19,4 +19,16 @@ GameInfo.prototype.setInfo = function(gameInfo) {
     }.bind(this));
 }
 
+GameInfo.prototype.hide = function() {
+    this.renderedTo.forEach(function(el) {
+        el.querySelector('.teams').style.display = 'none';
+    });
+}
+
+GameInfo.prototype.show = function() {
+    this.renderedTo.forEach(function(el) {
+        el.querySelector('.teams').style.display = 'block';
+    })
+}
+
 module.exports = GameInfo;
