@@ -48,3 +48,9 @@ h3.question {
     display: none;
     margin-top: 60px;
 }
+.question-list-container {
+    margin-top: 100px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
