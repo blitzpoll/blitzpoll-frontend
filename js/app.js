@@ -11,14 +11,16 @@ var gi = new GameInfo();
 var ql = new QuestionList();
 var nb = new NavBar();
 
+page('/question/:id', function(ctx) {
+    // render question results
+    console.log('render results for question ' + ctx.params.id);
+});
+
 page('/', function() {
     // render list of questions
     ql.appendTo('.question-list-container');
 });
 
-page('/question/:id', function(ctx) {
-
-});
 
 page.start();
 
