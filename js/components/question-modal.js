@@ -25,6 +25,7 @@ module.exports = function(question, client) {
         var btn = domify(buttonHtml);
         btn.id = 'answer-' + (i + 1);
         btn.textContent = answer;
+        btn.href = '/question/' + question.id;
         btn.onclick = function() {
             client.answer(question.id, answer);
             el.classList.toggle('active');
@@ -48,6 +49,7 @@ module.exports = function(question, client) {
             clearInterval(interval);
             if(active === true) {
                 el.classList.toggle('active');
+                window.location.href = '/question/' + question.id;
             }
         }
     }, 1000);
