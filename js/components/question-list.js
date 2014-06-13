@@ -1,22 +1,13 @@
 var fs = require('fs');
-var inherits = require('util').inherits;
-var Widget = require('browserify-widget');
-
-inherits(QuestionList, Widget);
-
+var domify = require('domify');
 var html = fs.readFileSync(__dirname + '/question-list.html', 'utf8');
 
-function QuestionList() {
-    Widget.call(this, html);
-}
+module.exports = function(el, questions) {
+    var listElement = domify(html);
+    el.appendChild(listElement);
 
-QuestionList.prototype.addQuestions = function(questions) {
-    questions.forEach(this.addQuestion.bind(this));
-}
-
-QuestionList.prototype.addQuestion = function(question) {
-    this.renderedTo.forEach(function(el) {
-        var ul = el.querySelector('.question-list');
+    for(var i = 0; i < questions.length; i++) {
+        var question = questions[i];
         var li = document.createElement('li');
         li.className = 'table-view-cell';
         var a = document.createElement('a');
@@ -25,8 +16,6 @@ QuestionList.prototype.addQuestion = function(question) {
         if(question.text.length > 20) a.textContent += '...';
         a.href = '/question/' + question.id;
         li.appendChild(a);
-        ul.appendChild(li);
-    });
+        listElement.appendChild(li);
+    }
 }
-
-module.exports = QuestionList;
