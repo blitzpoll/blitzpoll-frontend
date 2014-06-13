@@ -10,4 +10,10 @@ function NavBar() {
     Widget.call(this, html);
 }
 
+NavBar.prototype.setBackbutton = function(set) {
+    this.renderedTo.forEach(function(el) {
+        el.querySelector('.icon').style.display = (set === true) ? 'block' : 'none';
+    });
+}
+
 module.exports = NavBar;
