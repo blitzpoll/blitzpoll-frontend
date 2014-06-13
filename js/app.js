@@ -31,7 +31,6 @@ var renderQuestionDetails = function(id) {
     document.querySelector('.question-list-container').style.display = 'none';
     document.querySelector('#question-details').innerHTML = '';
     var question = client.questions[id];
-    console.debug('question object', question);
     questionDetails(document.querySelector('#question-details'), question);
 }
 
@@ -65,7 +64,6 @@ client.on('ready', function() {
     });
 
     client.getPreviousQuestions(function(questions) {
-        console.debug('previousQuestions', questions);
         renderPage(currentPage, currentCtx);
     });
 });
