@@ -32,6 +32,7 @@ HacksportsClient.prototype._parseIncomingData = function(data) {
 
 HacksportsClient.prototype._handleQuestion = function(question) {
     this.questions[question.id] = question;
+    this.questions[question.id].results = {};
     this.results[question.id] = {};
     this.emit('question', question);
 }
@@ -48,6 +49,8 @@ HacksportsClient.prototype._handlePreviousQuestions = function(questions) {
 
 HacksportsClient.prototype._handleAnswers = function(answers) {
     if(this.results[answers.questionId] === JSON.stringify(answers)) return;
+
+    this.questions[answers.questionId].results = answers.answers;
 
     this.results[answers.questionId] = JSON.stringify(answers);
     this.emit('answers', answers);
