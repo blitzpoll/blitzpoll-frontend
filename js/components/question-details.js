@@ -14,6 +14,10 @@ module.exports = function(el, question) {
         countTotal += question.results[keys[i]];
     }
 
+    var questionText = document.createElement('p');
+    questionText.textContent = question.text;
+    el.appendChild(questionText);
+
     answers.forEach(function(answer, i) {
         answer.percentage = (countTotal > 0) ? (100/countTotal) * parseInt(answer.count) : 0;
         var div = document.createElement('div');
