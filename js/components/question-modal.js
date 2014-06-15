@@ -14,7 +14,7 @@ el.querySelector('.close').onclick = function(evt) {
 var interval = null;
 var active = false;
 
-module.exports = function(question, client) {
+module.exports = function(question, client, remaining) {
     el.querySelector('#question').textContent = question.text;
     el.classList.toggle('active');
     active = true;
@@ -36,7 +36,7 @@ module.exports = function(question, client) {
 
     var cEl = el.querySelector('#countdown');
     cEl.innerHTML = '';
-    cEl.textContent = question.timeout;
+    cEl.textContent = remaining ? remaining : question.timeout;
 
     interval = setInterval(function() {
         cEl.textContent = parseInt(cEl.textContent) - 1;
