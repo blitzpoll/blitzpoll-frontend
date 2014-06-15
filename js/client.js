@@ -27,6 +27,7 @@ HacksportsClient.prototype._parseIncomingData = function(data) {
     case 'ANSWERS': this._handleAnswers(obj); break;
     case 'GAME_INFO': this._gameInfoCb.call(this, obj); break;
     case 'PREVIOUS_QUESTIONS': this._handlePreviousQuestions(obj); break;
+    case 'NEW_GAME': this.emit('newGame'); break;
     }
 }
 
