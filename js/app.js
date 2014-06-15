@@ -88,3 +88,7 @@ client.on('answers', function(answers) {
         renderQuestionDetails(answers.questionId);
     }
 });
+
+client.on('newGame', function() {
+    window.location.reload(false);
+});
