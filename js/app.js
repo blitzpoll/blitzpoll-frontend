@@ -64,6 +64,17 @@ client.on('ready', function() {
     });
 
     client.getPreviousQuestions(function(questions) {
+        var latestQuestion = questions[questions.length - 1];
+        questions.forEach(function(question) {
+            var now = (new Date()).getTime();
+            var elapsed = now - question.timestamp;
+
+            if(elapsed < (question.timeout * 1000)) {
+                // display question
+                questionModal(question, client, question.timeout - Math.floor(elapsed / 1000));
+            }
+        });
+
         renderPage(currentPage, currentCtx);
     });
 });
