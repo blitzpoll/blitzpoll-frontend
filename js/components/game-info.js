@@ -12,8 +12,10 @@ function GameInfo() {
 
 GameInfo.prototype.setInfo = function(gameInfo) {
     this.renderedTo.forEach(function(el) {
-        el.querySelector('.hometeam').textContent = gameInfo.home;
-        el.querySelector('.awayteam').textContent = gameInfo.away;
+        var home = gameInfo.home.substring(3, 4).toUpperCase() + gameInfo.home.substring(4);
+        var away = gameInfo.away.substring(3, 4).toUpperCase() + gameInfo.away.substring(4);
+        el.querySelector('.hometeam').textContent = home;
+        el.querySelector('.awayteam').textContent = away;
 
         el.querySelector('.teams').style.display = 'block';
     }.bind(this));
