@@ -30,6 +30,10 @@ body {
 
 }
 
+.content {
+    overflow: scroll;
+}
+
 p {
     color: white;
 }
@@ -74,7 +78,7 @@ h3.question {
     margin-top: 60px;
 }
 .question-list-container {
-    margin-top: 100px;
+    margin-top: 30px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
