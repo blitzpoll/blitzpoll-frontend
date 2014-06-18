@@ -6,6 +6,10 @@ module.exports = function(el, questions) {
     var listElement = domify(html);
     el.appendChild(listElement);
 
+    var questions = questions.sort(function(a, b) {
+         return (a.timestamp > b.timestamp) ? -1 : 1;
+    });
+
     for(var i = 0; i < questions.length; i++) {
         var question = questions[i];
         var li = document.createElement('li');
