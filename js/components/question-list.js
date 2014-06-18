@@ -19,6 +19,11 @@ module.exports = function(el, questions) {
         a.textContent = question.text.substring(0, 20);
         if(question.text.length > 20) a.textContent += '...';
         a.href = '/question/' + question.id;
+        var span = document.createElement('span');
+        span.style.color = '#aaa';
+	span.style.float = 'left';
+	span.textContent = question.minute;
+	a.appendChild(span);
         li.appendChild(a);
         listElement.appendChild(li);
     }
