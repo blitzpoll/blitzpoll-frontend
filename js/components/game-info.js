@@ -17,6 +17,9 @@ GameInfo.prototype.setInfo = function(gameInfo) {
         el.querySelector('.hometeam').textContent = home;
         el.querySelector('.awayteam').textContent = away;
 
+        el.querySelector('.homelogo').src = '/flags/' + gameInfo.home + '.png';
+        el.querySelector('.awaylogo').src = '/flags/' + gameInfo.away + '.png';
+
         el.querySelector('.teams').style.display = 'block';
     }.bind(this));
 }
