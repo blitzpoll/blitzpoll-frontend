@@ -19,6 +19,8 @@ module.exports = function(question, client, remaining) {
     el.classList.toggle('active');
     active = true;
 
+    el.querySelector('.title').textContent = question.minute;
+
     var aEl = document.querySelector('.answers');
     aEl.innerHTML = '';
     question.answers.forEach(function(answer, i) {
