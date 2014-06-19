@@ -32,8 +32,9 @@ module.exports = function(el, question) {
         el.appendChild(div);
 
         if(i === answers.length - 1) {
-            var totalCount = document.createElement('p');
+            var totalCount = document.createElement('div');
             totalCount.className = 'votes';
+            totalCount.style.clear = 'both';
             totalCount.textContent = countTotal + ' Stimme(n)';
             el.appendChild(totalCount);
         }
