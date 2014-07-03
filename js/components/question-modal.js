@@ -29,6 +29,7 @@ module.exports = function(question, client, remaining) {
         btn.textContent = answer;
         btn.href = '/question/' + question.id;
         btn.onclick = function() {
+            localStorage.setItem(question.id, answer);
             client.answer(question.id, answer);
             el.classList.toggle('active');
             active = false;
