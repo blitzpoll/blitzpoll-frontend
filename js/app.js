@@ -69,7 +69,7 @@ client.on('ready', function() {
             var now = (new Date()).getTime();
             var elapsed = now - question.timestamp;
 
-            if(elapsed < (question.timeout * 1000)) {
+            if(elapsed < (question.timeout * 1000) && !(localStorage.getItem(question.id))) {
                 // display question
                 questionModal(question, client, question.timeout - Math.floor(elapsed / 1000));
             }
